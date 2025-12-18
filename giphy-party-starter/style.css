@@ -1,0 +1,47 @@
+/* Your Styles Here */
+main {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+h1 {
+    text-align: center;
+}
+
+.row, #form-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1em;
+    margin-top: 1em;
+    border-radius: 5px;
+}
+
+input {
+    height: 2em;
+    border-radius: 4px;
+}
+
+
+button {
+    background-color: lightseagreen;
+    color: white;
+    padding: 1em 2em;
+    border-radius: 10px;
+    border: none;
+}
+
+.gify-display {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid lightseagreen;
+    border-radius: 5px;
+    margin-top : 1em;
+    padding: 1em;
+}
+
+.row > img {
+    border-radius: 10px;
+}
