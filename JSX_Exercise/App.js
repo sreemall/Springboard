@@ -23,7 +23,7 @@ function App ()
 	return (
 		<div>
 			<ul>
-				{list.map (sp => (<li>{sp}</li>))}
+				{list.map ((sp,index) => (<li key={index}>{sp}</li>))}
 			</ul>
 		</div>
 	);
