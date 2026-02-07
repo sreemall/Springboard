@@ -1,6 +1,7 @@
 import Card from "react-bootstrap/Card";
 
 
+
 const Pokemon = ({name, image, type, exp}) => {
     console.log (exp);
     return (
