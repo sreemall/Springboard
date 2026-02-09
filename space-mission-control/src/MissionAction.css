@@ -1,0 +1,13 @@
+
+.MissionAction-button {
+    border: 1px solid green;
+    background-color: transparent;
+    color: white;
+    width: 120px;
+    height: 40px;
+    font-size: small;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
