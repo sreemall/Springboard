@@ -1,0 +1,41 @@
+.BattleSimulator {
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 800px;
+    height: 600px;
+    padding: 10px;
+    border: 15px solid white;
+}
+
+.BattleSimulator-gamePlay {
+    width: 800px;
+    height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 2px solid white; */
+    padding: 5px;
+}
+
+.BattleSimulator-gamePlay h3:first-child {
+    color: green;
+}
+
+.BattleSimulator-gamePlay h3:last-child {
+    color: red;
+}
+
+.BattleSimulator-gameStatus {
+    width: 800px;
+    height: 75px;
+    margin: 10px;
+    border: 2px solid white;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

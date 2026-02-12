@@ -1,0 +1,26 @@
+
+.circle-Fire {
+    width: 60px;
+    height:60px;
+    background-color: orange;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid rgb(196, 8, 24);
+    box-shadow: 0 8px 3px rgba(0, 0, 0, 0.3);
+}
+
+.circle-Restart {
+    width: 60px;
+    height:60px;
+    background-color: black;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid white;
+    box-shadow: 0 8px 3px rgba(0, 0, 0, 0.3);
+}
