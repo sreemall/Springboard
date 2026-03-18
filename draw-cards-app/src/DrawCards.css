@@ -1,0 +1,56 @@
+#DrawCards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: green;
+    text-align: center;
+}
+
+#CardsContainer {
+    height: 550px;
+    width: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 2px black solid; */
+    
+    /* margin-top: 80px; */
+    /* outline: 3px solid blueviolet; */
+  margin-top: 80px;
+}
+
+.DrawCardBtn {
+    /* border: 1px solid black; */
+    color: white;
+    background-color: gray;
+    width: 150px;
+    height: 40px;
+    font-size: small;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.card {
+    position: absolute;  /* place cards on top of each other */
+    width: 250px;
+    height: auto;
+    /* transition: transform 0.3s; optional for smooth rotation */
+    z-index: 100; 
+    left: 0;
+  right: 0;
+    margin: auto;
+  /* outline: 3px solid red; */
+  }
+
+
+  #DrawCardBtn:hover {
+    cursor: pointer;
+    background-color: #444;
+  }
+  
+  #DrawCardBtn:active,
+  #DrawCardBtn:focus {
+    outline: none;
+  }
+  
