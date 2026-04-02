@@ -1,0 +1,73 @@
+.cel-encyclopedia {
+    /* height: 500px; */
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+/* .cel-encyclopedia h2 {
+    background-color: black;
+    color: white;
+} */
+
+.content-container {
+    /* height: 80vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.content-container button {
+    background-color: transparent;
+    color: white;
+    width: 80px;
+    height: 30px;
+    border: 1px solid green;
+}
+
+.navbar {
+    border: 1px solid white;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: small;
+}
+
+.navlink {
+    /* font-size: x-small; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 5px 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.active {
+    color: yellow;
+}
+
+.root-layout {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+
+.main {
+    flex: 1;
+}
+.go-back {
+    /* display: inline-block; */
+    align-self: flex-end;
+    background-color: transparent;
+    color: white;
+    width: 80px;
+    height: 30px;
+    border: 1px solid green;
+}

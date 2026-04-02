@@ -1,0 +1,24 @@
+{
+    "celestialObjects": [
+        {
+            "id": "mars",
+            "title": "Mars",
+            "content": "Known as the red planet, Mars has fascinated humans for centuries."
+        },
+        {
+            "id": "venus",
+            "title": "Venus",
+            "content": "Venus is closest planetary neighbor."
+        },
+        {
+            "id": "orion",
+            "title": "Orion Nebula",
+            "content": "Located in constellation of Orion."
+        },
+        {
+            "id": "andromeda",
+            "title": "Andromeda Galaxy",
+            "content": "Andremeda is closest large galaxy to ours."
+        }
+    ]
+}
