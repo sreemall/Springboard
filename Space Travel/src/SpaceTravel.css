@@ -1,0 +1,309 @@
+.space-travel {
+    /* height: 500px; */
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+/* .cel-encyclopedia h2 {
+    background-color: black;
+    color: white;
+} */
+
+.home-page h2 {
+    text-align: center;
+    margin: 15px;
+}
+.main {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px;
+    /* border: 2px solid blue; */
+}
+.sp-spacecrafts-page {
+    width: 40vw;
+    font-size: small;
+}
+.sp-spacecrafts-page p {
+    padding-bottom: 5px;
+}
+
+.sp-spacecraft-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 30vw;
+    height:200px;
+    padding: 10px;
+    /* border: 1px solid blue; */
+}
+
+.sp-spacecraft-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /* align-items: center; */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sp-image {
+    height: 60px;
+    width: 60px;
+    object-fit: cover;
+    border: 1px dashed whitesmoke;
+    margin: 10px;
+}
+
+.sp-sc-details-name-capacity {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.sp-sc-details-name-capacity p {
+    margin-bottom: 10px;
+    font-size: small;
+    min-height: 0;
+}
+
+.sp-sc-detail-desc {
+    flex: 1;
+    margin-left: 10px;
+    min-width: 0;
+    max-height: 80px;
+    overflow-y: auto; 
+}
+
+.sp-sc-detail-desc p {
+    margin-bottom: 10px;
+    font-size: small;
+    overflow-wrap: break-word;
+    
+}
+
+.bs-build-spacecraft-page {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    background-color: black;
+}
+
+.bs-back-btn {
+    background-color: transparent;
+    color: white;
+    width: 80px;
+    height: 30px;
+    border: 1px solid green;
+    margin-bottom: 5px;
+}
+.bs-build-spacecraft-form {
+    background-color: black;
+    color: wheat;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+    border: 1px solid white;
+}
+.bs-build-spacecraft-form input, textarea {
+  width: 100%;
+  padding: 1px;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+}
+
+.bs-build-btn {
+    align-self: flex-end;
+    background-color: transparent;
+    border: 1px solid green;
+    color: white;
+    width: 60px;
+    height: 30px;
+}
+
+.loading {
+    border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+}
+.destroy {
+    background-color: transparent;
+    color: white;
+    width: 70px;
+    height: 25px;
+    font-size: small;
+    border: 1px solid white;
+}
+
+.build-spacecraft {
+    background-color: black;
+    color: white;
+    width: 150px;
+    height: 30px;
+    margin-bottom: 10px;
+    border: 1px solid green;
+}
+
+.errors {
+    color: rgb(123, 4, 4);
+    font-size: small;
+    padding-top: 15px;
+}
+
+.errors p {
+    padding-bottom: 10px;
+}
+
+.spacecraft-container {
+    border: 1px solid white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    height: 60px;
+    width: 400px;
+    margin-bottom: 10px;
+}
+
+.navbar {
+    /* border: 1px solid white; */
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: small;
+    margin: 10px;
+}
+
+.navlink {
+    /* font-size: x-small; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 150px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 5px 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.active {
+    color: yellow;
+    border: 1px solid white;
+}
+
+.root-layout {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+
+.main {
+    flex: 1;
+}
+
+
+.pp-planets-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  overflow-x: auto;      
+  width: 50vw;
+  height: 90vh;
+  padding: 10px;
+  /* border: 1px solid blue; */
+}
+
+
+.pp-planet-container {
+    flex-shrink: 0; 
+    display: flex;
+    flex-direction: row; 
+    width: 500px;
+    height: 100px;
+    margin: 5px;
+    padding: 5px;;
+    border: 1px solid white;
+  }
+
+.pp-planet-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding:  10px;
+    margin: 5px;
+    height: 70px;
+    width: 50px;
+    border: 1px dashed whitesmoke;
+}
+
+.pp-planet-details-img {
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.pp-planet-details p {
+    align-self: flex-start;
+    font-size: x-small;
+}
+
+.pp-spacecrafts-container {
+    /* border: 1px solid white; */
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+    font-size: small;
+    margin-left: 15px;
+}
+
+.pp-spacecraft-details-img {
+    width: 25px;
+    height: 25px;
+    border: 1px dashed whitesmoke;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.pp-spacecraft-details p {
+    font-size: x-small;
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90px;
+    width: 150px;
+    margin: 30px;
+    padding: 20px;
+    border: 1px solid white;
+}
+/* .go-back {
+    display: inline-block;
+    align-self: flex-end;
+    background-color: transparent;
+    color: white;
+    width: 80px;
+    height: 30px;
+    border: 1px solid green;
+} */
