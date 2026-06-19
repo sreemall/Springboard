@@ -1,0 +1,19 @@
+{
+  "name": "express-shopping-list",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "y"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "start"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
