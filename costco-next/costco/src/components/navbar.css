@@ -1,0 +1,24 @@
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c9b2f1;
+    height: 30px;
+    width: 100%;
+}
+
+.home-navlink {
+    margin-left: 20px;
+    font-size: 20px;
+}
+
+.login-navlink .register-navlink .logout-navlink {
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.auth-links {
+    display: flex;
+    gap: 1.5rem;
+}
