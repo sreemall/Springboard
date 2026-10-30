@@ -10,13 +10,15 @@ export default function NavBar () {
   const router = useRouter();
 
   async function handleLogout(event) {
+    console.log ("999 In  Logout clicked")
     event.preventDefault ();
+    console.log ("999 Logout clicked")
 
     try {
       await axios.post("/api/users/logout");
 
       console.log ("Logout Successful!");
-      router.push("/login");
+      window.location = "/login";
     }
     catch (error) {
       console.error("Error logging out:", error);

@@ -10,7 +10,7 @@ export default async function PopulateCategories() {
 
         const result = await Category.insertMany(categories, { ordered: true, });
 
-        console.log(`Successfully inserted ${result.length} categories.`);
+        //console.log(`Successfully inserted ${result.length} categories.`);
     }
     catch (error) {
         console.error("Error inserting categories:", error.message);

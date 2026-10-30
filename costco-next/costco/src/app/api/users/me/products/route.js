@@ -48,8 +48,8 @@ export async function POST(req) {
             );
         }
 
-        console.log("9999 User:", decoded, "CategoryId: ", categoryId);
-        console.log("9999 Products:", productIds);
+        //console.log("9999 User:", decoded, "CategoryId: ", categoryId);
+        //console.log("9999 Products:", productIds);
 
         await connectDatabase();
 

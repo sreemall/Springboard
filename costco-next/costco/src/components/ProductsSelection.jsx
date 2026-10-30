@@ -17,7 +17,7 @@ export default function ProductSelection ({products, categoryId}) {
     const currentProducts = products.slice(startIndex, (startIndex + productsPerPage));
 
     const handleProductSelected = (productId) => {
-        console.log ("9999 Selected clicked - prodId: ", productId);
+        //console.log ("9999 Selected clicked - prodId: ", productId);
         setSelectedProdIds ((prev) => {
             if (prev.includes (productId)) {
                 //remove from selectedProdIds
@@ -33,7 +33,7 @@ export default function ProductSelection ({products, categoryId}) {
     const handleSaveSelection = async () => {
         //save all products in selectedProdIds into database for a given user
         
-        console.log ("999 In handleSaveSelection");
+        //console.log ("999 In handleSaveSelection");
         try {
             const response = await axios.post( "/api/users/me/products",
                                                 {productIds: selectedProdIds,categoryId: categoryId},
@@ -43,7 +43,7 @@ export default function ProductSelection ({products, categoryId}) {
     
             const data = await response.data;
     
-            console.log("9999 response from POST req to save Selected products: ", data);
+            //console.log("9999 response from POST req to save Selected products: ", data);
 
             nextRouter.push ("/");
 

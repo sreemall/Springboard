@@ -7,7 +7,8 @@ export async function POST () {
             message: "Logout Successful",
             success: true
         });
-        response.cookies.set ("jwt", "", {httpOnly: true, expires: new Date(0)});
+        //response.cookies.set ("jwt", "", {httpOnly: true, expires: new Date(0)});
+        response.cookies.set ("jwt", "", {httpOnly: true, path: "/", maxAge: 0,});
         return response;
     }
     catch (error) {

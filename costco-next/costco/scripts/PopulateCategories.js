@@ -5,7 +5,7 @@ import categories from "../src/data/categories.js";
 //import mongoose from "mongoose";
 
 export default async function PopulateCategories() {
-    console.log ("In PopulateCategories")
+    //console.log ("In PopulateCategories")
     try {   
         await connectDatabase();
 

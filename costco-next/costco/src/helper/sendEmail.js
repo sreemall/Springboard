@@ -57,6 +57,6 @@ export default async function sendEmail(name="", email="", messageData="") {
     return;
   }
 
-  console.log("Email sent successfully:", data);
+  //console.log("Email sent successfully:", data);
 }
 

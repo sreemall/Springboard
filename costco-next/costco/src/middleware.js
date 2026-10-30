@@ -2,23 +2,24 @@ import { NextResponse } from "next/server";
 //import jwt from "jsonwebtoken";
 
 
-export function middleware(req) {
-  console.log("9999 In MIDDLEWARE");
+export async function middleware(req) {
+  //console.log("9999 In MIDDLEWARE");
   const path = req.nextUrl.pathname;
   console.log("9999 Middleware path=", path);
 
   const isPublicPath = path === "/login" || path === "/register";
+  const isHomePath = path === "/";
 
   // get jwt if it is there
   const token = req.cookies.get("jwt")?.value;
-  console.log("9999 .......Middleware jwt cookie=", token);
+  //console.log("9999 .......Middleware jwt cookie=", token);
 
   let isAuthenticated = false;
 
   if (token && process.env.JWT_SECRET) {
     try {
-      verify(token, process.env.JWT_SECRET);
-      isAuthenticated = true;
+      isAuthenticated = await verify(token, process.env.JWT_SECRET);
+      //isAuthenticated = true;
     } catch (error) {
       // token is invalid or expired.
       console.log("err", error);
@@ -26,7 +27,10 @@ export function middleware(req) {
     }
   }
 
-  console.log("is authenticated", isAuthenticated);
+  //console.log("is authenticated", isAuthenticated);
+  if (isHomePath)
+    return NextResponse.next();
+
   if (isPublicPath && isAuthenticated) {
     //cannot visit public paths
     return NextResponse.redirect(new URL("/", req.url));

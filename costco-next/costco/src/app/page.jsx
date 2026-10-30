@@ -8,7 +8,7 @@ import "@/app/Pages.css";
 
 
 export default async function HomePage() {
-  console.log ("9999 In HOME PAGE");
+  //console.log ("9999 In HOME PAGE");
   let categories = [];
   try {
     await connectDatabase();

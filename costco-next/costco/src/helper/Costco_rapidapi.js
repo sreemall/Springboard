@@ -12,10 +12,7 @@ export default async function fetchCostcoData (categoryName, categoryId, startAt
     const options = {
         method: 'GET',
         headers: {
-            'x-rapidapi-key': '6564492a49mshdf67ffd9d458df6p1c8606jsnae8898e236ee',
-            //'x-rapidapi-key': '715df54507msh36c666642e13c2bp1163d3jsnac174a610752',
-            //'x-rapidapi-key': '2ec598218emsh5654a18fd46b234p171b8cjsn209967745c4e',
-            //'x-rapidapi-key': '0239d99c60msh2a8b78bd0bac930p17357cjsn11348ad0d594',
+            'x-rapidapi-key': `${process.env.RAPID_API_KEY}`,
             //'x-rapidapi-host': 'costco-live-data.p.rapidapi.com',
             'x-rapidapi-host': 'real-time-costco-data.p.rapidapi.com',
             'Content-Type': 'application/json'
@@ -72,11 +69,11 @@ export default async function fetchCostcoData (categoryName, categoryId, startAt
                     // groupId: product.group_id
                 }));
             products = [...products, ...currProducts];
-            console.log(
-                "Total available:", count,
-                "Fetched this batch:", currProducts.length,
-                "Total fetched:", products.length
-              );
+            // console.log(
+            //     "Total available:", count,
+            //     "Fetched this batch:", currProducts.length,
+            //     "Total fetched:", products.length
+            //   );
             //console.log ("999 while  count= ", resultObj.count, "cur_batch_prods: ", currProducts.length, " total_products: ", products.length);
             
             // Prevent an infinite loop if the API returns no results

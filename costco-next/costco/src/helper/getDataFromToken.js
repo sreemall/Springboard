@@ -16,7 +16,7 @@ export default function getDataFromToken (req) {
 
     try {
         const decoded = jwt.verify (token, secret);
-        console.log ("Decoded JWT= ", decoded);
+        //console.log ("Decoded JWT= ", decoded);
         return decoded;
     }
     catch (error) {

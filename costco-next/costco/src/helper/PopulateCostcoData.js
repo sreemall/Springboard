@@ -11,14 +11,14 @@ export default async function PopulateCostcoData() {
 
     const categories = await Category.find();
     for (const category of categories) {
-      console.log("9999 Category Id= ", category.categoryId);
+      //console.log("9999 Category Id= ", category.categoryId);
 
       // 2. Fetch products belonging to this category ID
       const products = await fetchProductsByCategory(
         category.name,
         category.categoryId
       );
-      console.log("9999 Products length =", products?.length);
+      //console.log("9999 Products length =", products?.length);
       //console.log("9999 First product =", products?.[0]);
 
       //Save products in database
@@ -26,12 +26,12 @@ export default async function PopulateCostcoData() {
         throw new Error("Costco API did not return a product array");
       }
 
-      console.log(
-        "9999 ProductsByCategory for categoryId: ",
-        category.categoryId,
-        " products len= ",
-        products.length
-      );
+      // console.log(
+      //   "9999 ProductsByCategory for categoryId: ",
+      //   category.categoryId,
+      //   " products len= ",
+      //   products.length
+      // );
 
       for (const product of products) {
         //const { name, productId, categoryId, price, discount, imageUrl } = product;

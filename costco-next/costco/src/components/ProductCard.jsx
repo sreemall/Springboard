@@ -1,7 +1,7 @@
 "use client";
 
 export default function ProductCard ({product, onSelect, isSelected}) {
-    console.log ("9999 ProductCard product: ", product, isSelected);
+    //console.log ("9999 ProductCard product: ", product, isSelected);
     
     return (
         <div className="product-card">

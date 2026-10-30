@@ -7,7 +7,7 @@ import Category from "../src/models/categoryModel.js";
 import ProductPriceHistory from "../src/models/productPriceHistoryModel.js";
 
 export default async function PopulateCostcoData() {
-  console.log ("In scripts/populateConstcoData");
+  //console.log ("In scripts/populateConstcoData");
   try {
     await connectDatabase();
     //await PopulateCategories();
@@ -15,14 +15,14 @@ export default async function PopulateCostcoData() {
   
     for (const category of categories) {
       
-      console.log("9999 Category Id= ", category.categoryId, category.name);
+      //console.log("9999 Category Id= ", category.categoryId, category.name);
       
       // 2. Fetch products belonging to this category ID
       const products = await fetchProductsByCategory(
         category.name,
         category.categoryId
       );
-      console.log("9999 Products length =", products?.length);
+      //console.log("9999 Products length =", products?.length);
       //console.log("9999 First product =", products?.[0]);
 
       //Save products in database
