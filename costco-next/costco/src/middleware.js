@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 export async function middleware(req) {
   //console.log("9999 In MIDDLEWARE");
   const path = req.nextUrl.pathname;
-  console.log("9999 Middleware path=", path);
+  //console.log("9999 Middleware path=", path);
 
   const isPublicPath = path === "/login" || path === "/register";
   const isHomePath = path === "/";
@@ -38,7 +38,7 @@ export async function middleware(req) {
 
   // // Unauthenticated users cannot visit protected pages
   if (!isPublicPath && !isAuthenticated) {
-    console.log("unauthenicated");
+    //console.log("unauthenicated");
     const response = NextResponse.redirect(new URL("/login", req.url));
 
     // Remove an invalid or expired jwt.
