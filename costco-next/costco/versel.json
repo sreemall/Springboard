@@ -1,0 +1,8 @@
+{
+    "crons": [
+      {
+        "path": "/api/cron/populate-costco-data",
+        "schedule": "0 10 * * 0"
+      }
+    ]
+  }

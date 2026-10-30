@@ -1,6 +1,5 @@
 import connectDatabase from "../src/database/db.js";
 import mongoose from "mongoose";
-import PopulateCategories from "../src/helper/PopulateCategories.js";
 import fetchCostcoData from "../src/helper/Costco_rapidapi.js";
 import Product from "../src/models/productModel.js";
 import Category from "../src/models/categoryModel.js";
@@ -10,7 +9,7 @@ export default async function PopulateCostcoData() {
   //console.log ("In scripts/populateConstcoData");
   try {
     await connectDatabase();
-    //await PopulateCategories();
+  
     const categories = await Category.find();
   
     for (const category of categories) {
