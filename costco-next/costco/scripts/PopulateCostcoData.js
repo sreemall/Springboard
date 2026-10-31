@@ -89,7 +89,7 @@ export default async function PopulateCostcoData() {
             existingProduct.price !== newProduct.price ||
             existingProduct.discount !== newProduct.discount ||
             existingProduct.onSale !== newProduct.onSale) {
-              
+
           await ProductPriceHistory.create({
                     productId: newProduct.productId,
                     price: newProduct.price,
@@ -120,4 +120,4 @@ export default async function PopulateCostcoData() {
 }
 
 
-PopulateCostcoData();
+//PopulateCostcoData();
