@@ -10,6 +10,13 @@ import mongoose from "mongoose";
 export default async function NotifyUsers () {
 
     async function emailUsersAboutSaleProducts () {
+        const results = {success: true,
+                        totalUsers: 0,
+                        emailsSent: 0,
+                        emailsFailed: 0,
+                        errors: [],
+                        };
+
         //console.log ("999 In emailUsersAboutSaleProducts ....")
         // Find products currently on sale
         const onSaleProducts = await Product.find({
@@ -48,11 +55,13 @@ export default async function NotifyUsers () {
                         productName: productNameMap.get (`${up.productId}_${up.categoryId}`)
                     }
         ));
+        //console.log ("999 UserProductsWithName: ", userProductsWithName);
     
         // Group on sale products by user
         const productsByUser = new Map();
         for (const up of userProductsWithName) {
             const userId = String(up.userId);
+            //console.log ("9999 userId: ", userId);
             if (!productsByUser.has (userId))
                 productsByUser.set (userId, []);
 
@@ -69,7 +78,6 @@ export default async function NotifyUsers () {
 
         //console.log ("999 productsByUser: ", productsByUser);
 
-    
         // Fetch all corresponding user emails in one query
         const userIds = [...productsByUser.keys()];
 
@@ -77,25 +85,39 @@ export default async function NotifyUsers () {
                                             .map (({_id, email, firstName}) => ({userId: String(_id), email, firstName})
                                             );
 
-        //console.log ("999 userIds: ", userIds, " users: ", users);
-
         // Send one email per user
         for (const user of users) {
-            //console.log ("999 Notify User: ", String(user.userId));
+            console.log ("999 Notify User: ", String(user.userId), user.firstName);
             const productNameUrls = productsByUser.get(String(user.userId)) || [];
     
             if (productNameUrls.length != 0) {
                 //console.log ("... sending email data: ", productNames);
-                await sendEmail (user.firstName, user.email, productNameUrls);
+                const emailResponse = await sendEmail (user.firstName, user.email, productNameUrls);
+                
+                if (emailResponse.success) {
+                    results.emailsSent++;
+                }
+                else {
+                    results.emailsFailed++;
+            
+                    results.errors.push({
+                                        name: user.firstName,
+                                        email: user.email,
+                                        error: emailResponse.error,
+                                        });
+                }             
             }
         }
+
+        results.success = results.emailsFailed === 0;
+        return ({...results, message: "Notify Users Completed"});
     }
+
 
     try {
         //console.log ("999 In NotifyUsers try{} ....");
         await connectDatabase();
-        // sendEmail ();
-        await emailUsersAboutSaleProducts ();
+        return await emailUsersAboutSaleProducts ();
 
     }
     catch (error) {
