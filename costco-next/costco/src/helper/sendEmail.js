@@ -12,11 +12,19 @@ export default async function sendEmail(name="", email="", messageData="") {
 
     let html;
 
+    //console.log ("999 messageData: ", messageData)
+
     if (Array.isArray(messageData)) {
         // Array: format as a list of products on sale
-        const dataList = messageData
-            .map(dataItem => `<li>${dataItem}</li>`)
-            .join("");
+        const dataList = messageData.map(
+                            dataItem => `<li>${dataItem.productName}
+                                          <br/>
+                                          <a href="${dataItem.url}">
+                                            View Product
+                                          </a>
+                                          <br/>
+                                          <small>${dataItem.url}</small>
+                                        </li>`).join("");
 
         html = `
                 <div style="text-align: left;">
@@ -57,6 +65,6 @@ export default async function sendEmail(name="", email="", messageData="") {
     return;
   }
 
-  //console.log("Email sent successfully:", data);
+  console.log("Email sent successfully:", data);
 }
 

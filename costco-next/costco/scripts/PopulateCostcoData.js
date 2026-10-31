@@ -44,11 +44,12 @@ export default async function PopulateCostcoData() {
 
         const existingProduct = await Product.findOne({
           productId: product.productId,
-        }).select("price");
+        }).select("price discount onSale");
 
         const newProduct = await Product.findOneAndUpdate(
           { productId: product.productId },
           {
+            
             $set: {
               name: product.name,
               productId: product.productId,
@@ -57,12 +58,13 @@ export default async function PopulateCostcoData() {
               price: product.price,
               discount: product.discount,
               imageUrl: product.imageUrl,
+              onSale: product.onSale
 
               // Automatically calculate onSale
-              onSale:
-                  typeof product.discount === "string" &&
-                  /\boff\b/i.test(product.discount) &&
-                  (parseFloat(product.discount.replace(/[^0-9.]/g, "")) > 0),
+              // onSale:
+              //     typeof product.discount === "string" &&
+              //     /\boff\b/i.test(product.discount) &&
+              //     (parseFloat(product.discount.replace(/[^0-9.]/g, "")) > 0),
             },
           },
           {
@@ -83,10 +85,16 @@ export default async function PopulateCostcoData() {
         // });
 
         // Save history if the product is new or its price changed
-        if (!existingProduct || existingProduct.price !== newProduct.price) {
+        if (!existingProduct ||
+            existingProduct.price !== newProduct.price ||
+            existingProduct.discount !== newProduct.discount ||
+            existingProduct.onSale !== newProduct.onSale) {
+              
           await ProductPriceHistory.create({
                     productId: newProduct.productId,
                     price: newProduct.price,
+                    discount: newProduct.discount,
+                    onSale: newProduct.onSale
               });
         }
       }

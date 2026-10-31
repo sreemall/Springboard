@@ -1,6 +1,7 @@
 
 import { NextResponse } from 'next/server';
-import { PopulateCostcoData } from '../../../../../scripts/PopulateCostcoData';
+// import { PopulateCostcoData } from '../../../../../scripts/PopulateCostcoData';
+import PopulateCostcoData from '@scripts/PopulateCostcoData';
 
 export const maxDuration = 300;
 
@@ -12,7 +13,9 @@ export async function GET(request) {
 
   try {
     // Trigger your standalone script logic
+    console.log("9999 CRON STARTED");
     await PopulateCostcoData();
+    console.log("9999 CRON COMPLETED");
 
     return NextResponse.json({ success: true, message: "Costco Data Populated!" });
   } 

@@ -1,13 +1,21 @@
 "use client";
 import React, { useState } from "react";
 import "@/app/Pages.css";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios";
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({ email: "", password: "" });
   //const [errors, setErrors] = useState({email: "", password: ""});
   const nextRouter = useRouter();
+  //get returnUrl if there
+  const searchParams = useSearchParams();
+  const returnUrl = searchParams.get ("returnUrl");
+  console.log ("9999 Login returnUrl: ", returnUrl);
+  console.log("9999 Login Page Loaded");
+console.log("9999 Current URL:", window.location.href);
+console.log("9999 returnUrl:", returnUrl);
+
   console.log ("999 In login Page");
 
   const handleChange = (e) => {
@@ -36,7 +44,10 @@ export default function LoginPage() {
         response.status
       );
       // nextRouter.push ("/");
-      window.location.href = "/";
+      //take user to returnUrl if given otherewise to Home page
+      const destination = returnUrl && returnUrl.startsWith("/") && !returnUrl.startsWith("//")
+                                  ? returnUrl : "/";
+      window.location.href = destination;
     } catch (error) {
       console.log(error.message);
     }

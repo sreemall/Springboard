@@ -31,6 +31,15 @@ export async function middleware(req) {
   if (isHomePath)
     return NextResponse.next();
 
+  if (isAuthenticated && path === "/login") {
+    const returnUrl = req.nextUrl.searchParams.get("returnUrl");
+
+    const destination = (returnUrl && returnUrl.startsWith("/") && !returnUrl.startsWith("//"))
+                                      ? returnUrl : "/";
+
+    return NextResponse.redirect( new URL(destination, req.url));
+  }
+
   if (isPublicPath && isAuthenticated) {
     //cannot visit public paths
     return NextResponse.redirect(new URL("/", req.url));

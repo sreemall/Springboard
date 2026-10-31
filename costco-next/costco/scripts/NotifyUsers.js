@@ -1,8 +1,10 @@
 import UserProduct from "../src/models/userProductModel.js";
 import Product from "../src/models/productModel.js";
 import User from "../src/models/userModel.js"
+import Category from "../src/models/categoryModel.js";
 import sendEmail from "../src/helper/sendEmail.js";
 import connectDatabase from "../src/database/db.js";
+import categories from "../src/data/categories.js";
 import mongoose from "mongoose";
 
 export default async function NotifyUsers () {
@@ -15,7 +17,10 @@ export default async function NotifyUsers () {
         }).lean();
     
 
-        if (onSaleProducts.length === 0) return;
+        if (onSaleProducts.length === 0) {
+            console.log ("9999 No Products are On Sale.  No Notifications are Sent!")
+            return;
+        }
     
         // Find users interested in those products
         const userProducts = await UserProduct.find({
@@ -30,6 +35,13 @@ export default async function NotifyUsers () {
                 onSaleProducts.map (product => 
                     [`${product.productId}_${product.categoryId}`, product.name]));
 
+        // Fetch category names in ONE query
+        const categories = await Category.find().select("categoryId name").lean();
+
+        const categoryNameMap = new Map(
+            categories.map(category => [ category.categoryId, category.name ])
+        );
+
         //Add product name to each record of userProducts
         const userProductsWithName = userProducts.map (up => (
                     {   ...up,
@@ -42,9 +54,17 @@ export default async function NotifyUsers () {
         for (const up of userProductsWithName) {
             const userId = String(up.userId);
             if (!productsByUser.has (userId))
-                productsByUser.set (userId, new Set ());
+                productsByUser.set (userId, []);
 
-            productsByUser.get(userId).add (up.productName);
+            // productsByUser.get(userId).add (up.productName);
+
+            const categoryName = categoryNameMap.get(up.categoryId);
+
+            const returnUrl = `/categories/${up.categoryId}?name=${encodeURIComponent(categoryName)}`;
+
+            const url = `https://springboard-costco-next.vercel.app/login?returnUrl=${encodeURIComponent(returnUrl)}`;
+
+            productsByUser.get(userId).push ({productName: up.productName, url});
         }
 
         //console.log ("999 productsByUser: ", productsByUser);
@@ -62,11 +82,11 @@ export default async function NotifyUsers () {
         // Send one email per user
         for (const user of users) {
             //console.log ("999 Notify User: ", String(user.userId));
-            const productNames = [...(productsByUser.get(String(user.userId)) || [])];
+            const productNameUrls = productsByUser.get(String(user.userId)) || [];
     
-            if (productNames.length != 0) {
+            if (productNameUrls.length != 0) {
                 //console.log ("... sending email data: ", productNames);
-                await sendEmail (user.firstName, user.email, productNames);
+                await sendEmail (user.firstName, user.email, productNameUrls);
             }
         }
     }

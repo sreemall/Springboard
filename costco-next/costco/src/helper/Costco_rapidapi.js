@@ -53,21 +53,31 @@ export default async function fetchCostcoData (categoryName, categoryId, startAt
             if (count > 96)
                 count = 96;
 
-            let currProducts = costcoProducts.map (product => ({
-                    name: product.item_product_name,
-                    productId: product.item_number,
-                    productNumber: product.item_number,
-                    categoryId: categoryId,
-                    price: product.item_location_pricing_salePrice,
-                    discount: `$${(
-                                        Number(product.item_location_pricing_listPrice) -
-                                        Number(product.item_location_pricing_salePrice)
-                                    ).toFixed(2)} OFF`,
-                    imageUrl: product.item_product_primary_image,
-                    // category: product.item_as400_category,
-                    // categoryPath: product.categoryPath_ss,
-                    // groupId: product.group_id
-                }));
+            let currProducts = costcoProducts.map (product => {
+                        const listPrice = Number(product.item_location_pricing_listPrice);
+                        const salePrice = Number(product.item_location_pricing_salePrice);
+                        
+                        //const discountAmount = listPrice - salePrice;
+
+                        const discountAmount = (Number.isFinite(listPrice) && 
+                                                Number.isFinite(salePrice)) ? listPrice - salePrice : 0;
+                        
+
+                        return {
+                            name: product.item_product_name,
+                            productId: product.item_number,
+                            productNumber: product.item_number,
+                            categoryId: categoryId,
+                            price: product.item_location_pricing_salePrice,
+                            discount: `$${discountAmount.toFixed(2)} OFF`,
+                            // discount: `$${(
+                            //                     Number(product.item_location_pricing_listPrice) -
+                            //                     Number(product.item_location_pricing_salePrice)
+                            //                 ).toFixed(2)} OFF`,
+                            imageUrl: product.item_product_primary_image,
+                            onSale: discountAmount > 0  // Automatically calculate onSale
+                        }});
+
             products = [...products, ...currProducts];
             // console.log(
             //     "Total available:", count,

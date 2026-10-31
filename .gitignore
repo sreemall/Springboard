@@ -9,3 +9,5 @@ node_modules/
 # Next.js generated files
 .next/
 node_modules/
+.vercel
+.env*
