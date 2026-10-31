@@ -12,9 +12,9 @@ export async function GET(request) {
 
   try {
     // Trigger your standalone script logic
-    console.log("9999 CRON STARTED");
+    console.log("9999 Notify Users CRON STARTED");
     const result = await NotifyUsers();
-    console.log("9999 CRON COMPLETED result: ", result);
+    console.log("9999 Notify Users CRON COMPLETED result: ", result);
 
     return NextResponse.json({ status: (result.success ? 200 : 500)},
                              { message: "Notify Users Completed" ,
@@ -22,7 +22,7 @@ export async function GET(request) {
                              });
   } 
   catch (error) {
-    console.error('Costco cron failed:', error);
+    console.error('Notify Users CRON failed:', error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
   }
 }
