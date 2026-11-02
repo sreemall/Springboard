@@ -154,7 +154,7 @@ function LoginForm() {
         response.data,
         response.status
       );
-      
+      window.localStorage.setItem ("isLoggedIn", "true");
       const destination = returnUrl && returnUrl.startsWith("/") && !returnUrl.startsWith("//")
                           ? returnUrl : "/";
       window.location.href = destination;

@@ -41,7 +41,7 @@ export async function POST (nextRequest) {
             //get token
             const token = jwt.sign ({id: user._id.toString()}, process.env.JWT_SECRET, {expiresIn: process.env.JWT_MAX_AGE});
             //send token as cookie
-            response.cookies.set ("jwt", token, {httpOnly: true,
+            response.cookies.set ("jwt", token, {httpOnly: false,
                                                 path: "/",
                                                 maxAge: process.env.COOKIE_MAX_AGE});
             

@@ -36,15 +36,19 @@ export default function RegisterUserPage () {
         e.preventDefault ();
 
         //Validate data
+        let isDataValid = true;
         if ((formData.firstName.length != 0) && !validText(formData.firstName)) {
             setErrors ((prev) => ({...prev, firstName: "Should contain only letters"}));
+            isDataValid = false;
         }
         else {
             setErrors ((prev) => ({...prev, firstName: ""}));
+      
         }
 
         if ((formData.lastName.length != 0) && !validText(formData.lastName)) {
             setErrors ((prev) => ({...prev, lastName: "Should contain only letters"}));
+            isDataValid = false;
         }
         else {
             setErrors ((prev) => ({...prev, lastName: ""}));
@@ -52,6 +56,7 @@ export default function RegisterUserPage () {
 
         if (!validEmail (formData.email)) {
             setErrors ((prev) => ({...prev, email: "(user@example.com)"}));
+            isDataValid = false;
         }
         else {
             setErrors ((prev) => ({...prev, email: ""}));
@@ -59,10 +64,14 @@ export default function RegisterUserPage () {
 
         if(!validPassword (formData.password)) {
             setErrors ((prev) => ({...prev, password: "Invalid Password!"}));
+            isDataValid = false;
         }
         else {
             setErrors ((prev) => ({...prev, password: ""}));
         }
+
+        if (!isDataValid)
+            return;
         
         try {
             const response = await axios.post ("/api/users/register", formData, {headers: {"Content-Type" : "application/json"}});
