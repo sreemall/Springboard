@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import {useEffect, useState} from "react";
 import axios from "axios";
 import "./navbar.css";
 
@@ -8,7 +9,15 @@ import "./navbar.css";
 export default function NavBar () {
   const pathName = usePathname ();
   const router = useRouter();
-  const isLoggedIn = window.localStorage.getItem("isLoggedIn");
+  //  const isLoggedIn = window.localStorage.getItem("isLoggedIn");
+  const [isLoggedIn, setIsLoggedIn] = useState (false);
+
+  //console.log ("999 isLoggedIn=", isLoggedIn);
+
+  useEffect (()=> {
+    //console.log ("9999 useEffect ... isLoggedIn= ", window.localStorage.getItem ("isLoggedIn"))
+    setIsLoggedIn (window.localStorage.getItem ("isLoggedIn") === "true");
+  }, []);
 
   async function handleLogout(event) {
     console.log ("999 In  Logout clicked")
@@ -21,6 +30,7 @@ export default function NavBar () {
 
       console.log ("Logout Successful!");
       localStorage.removeItem ("isLoggedIn");
+      setIsLoggedIn (false);
       window.location = "/login";
     }
     catch (error) {
